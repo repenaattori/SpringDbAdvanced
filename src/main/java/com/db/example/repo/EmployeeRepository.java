@@ -24,7 +24,7 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
     List<Employee> findByNameContains(String keyword);
 
     //Etsii työntekijät joiden id pienempi kuin limit
-    List<Employee> findByIdLessThan(Integer limit);
+    List<Employee> findByIdLessThan(Long limit);
 
 
     //JPQL-formaatilla voidaan tehdä SQL-tyylisiä kyselyjä käyttäen olioita ja parametreja

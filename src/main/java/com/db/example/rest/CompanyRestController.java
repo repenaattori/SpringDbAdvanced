@@ -5,14 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.db.example.data.Company;
-import com.db.example.data.Employee;
 import com.db.example.data.EmployeeInfoDto;
 import com.db.example.service.CompanyService;
 
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
@@ -27,7 +23,7 @@ public class CompanyRestController {
         return compService.searchNamesByKeyword(keyword);
     }
 
-    @GetMapping("empoyleeinfos")
+    @GetMapping("employeeinfos")
     public List<EmployeeInfoDto> getEmployeeInfos(){
         return compService.getEmployeeInfos();
     }

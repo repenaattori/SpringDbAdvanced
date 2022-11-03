@@ -2,13 +2,9 @@ package com.db.example.service;
 
 import java.util.List;
 
-import javax.annotation.PostConstruct;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.db.example.data.Company;
-import com.db.example.data.Employee;
 import com.db.example.data.EmployeeInfoDto;
 import com.db.example.repo.CompanyRepository;
 import com.db.example.repo.EmployeeRepository;
