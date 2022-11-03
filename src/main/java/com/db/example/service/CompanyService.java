@@ -21,35 +21,16 @@ public class CompanyService {
     @Autowired
     EmployeeRepository empRepo;
 
-    @PostConstruct
-    void init(){
-        List<Long> ids = empRepo.getCompanyIds();
-
-        for (Long e : ids) {
-            System.out.println("***"+e);
-        }
+    /**
+     * Etsii hakusanalla työntekijöiden nimiä
+     */
+    public List<String> searchNamesByKeyword(String keyword){
+        return empRepo.getEmployeeNamesByKeyword(keyword);
     }
 
-    public void saveCompany(Company employee){
-        compRepo.save(employee);
-    }
-    
-    public void saveEmployee(Employee employee){
-        empRepo.save(employee);
-    }
-
-    public List<Employee> getEmpoyees(){
-        return empRepo.findAll();
-    }
-
-    public List<String> getCompanyNames(){
-        return null;
-    }
-
-    public List<Employee> searchEmployees(String text){
-        return empRepo.findByNameContains(text);
-    }
-
+    /**
+     * Hakee työntekijöiden nimen ja työpaikan nimen olioina.
+     */
     public List<EmployeeInfoDto> getEmployeeInfos(){
         return empRepo.getEmpoyeeInfos();
     }

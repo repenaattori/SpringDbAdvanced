@@ -22,24 +22,13 @@ public class CompanyRestController {
     @Autowired
     CompanyService compService;
 
-    @PostMapping("addcompany")
-    public String addCompany(@RequestBody Company company) {
-        return "Ok";
+    @GetMapping("search")
+    public List<String> getNamesByText(@RequestParam String keyword){
+        return compService.searchNamesByKeyword(keyword);
     }
 
-    @PostMapping("addemployee")
-    public String addEmployee(@RequestBody Employee employee) {
-        return "Ok";
-    }
-
-    @GetMapping("getbytext")
-    public List<Employee> getEmpoyeesByText(@RequestParam String text){
-        return compService.searchEmployees(text);
-    }
-  
-    @GetMapping("getinfo")
-    public List<EmployeeInfoDto> getInfo(){
+    @GetMapping("empoyleeinfos")
+    public List<EmployeeInfoDto> getEmployeeInfos(){
         return compService.getEmployeeInfos();
     }
-    
 }
