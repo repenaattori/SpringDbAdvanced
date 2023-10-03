@@ -1,6 +1,7 @@
 package com.db.example.repo;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -46,6 +47,10 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
     @Query(value="SELECT company_id FROM employee", nativeQuery = true)
     List<Long> getCompanyIds();
 
+    //Natiivikyselyjen tuloksia voidaan myös käsitellä mappauksena.
+    //Yksi mappaus on yksi rivi. Key on sarakkeen nimi, value vastaava arvo.
+    @Query(value="SELECT employee.name ename, company.name cname  FROM employee JOIN company ON company.id=employee.company_id", nativeQuery = true)
+    List<Map<String, Object>> getCustomEmployeeInfo();
 
     
 }
