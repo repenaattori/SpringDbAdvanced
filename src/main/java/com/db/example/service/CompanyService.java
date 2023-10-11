@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
+import com.db.example.data.Company;
 import com.db.example.data.EmployeeInfoDto;
 import com.db.example.repo.CompanyRepository;
 import com.db.example.repo.EmployeeRepository;
@@ -34,7 +35,18 @@ public class CompanyService {
         return empRepo.getEmpoyeeInfos();
     }
 
+    /**
+     * Hakee natiivilla kyselyllä infoa.
+     */
     public  List<Map<String, Object>> getCustom(){
         return  empRepo.getCustomEmployeeInfo();
+    }
+
+    /**
+     * Add new company
+     */
+    public Company addCompany(Company company){
+        Company c = compRepo.save(company);
+        return c;
     }
 }
