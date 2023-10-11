@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.db.example.data.EmployeeInfoDto;
 import com.db.example.service.CompanyService;
 
-
-
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -22,7 +20,6 @@ public class CompanyRestController {
     public CompanyRestController(CompanyService compService){
         this.compService = compService;
     }
-
 
     @GetMapping("/search")
     public List<String> getNamesByText(@RequestParam String keyword){
