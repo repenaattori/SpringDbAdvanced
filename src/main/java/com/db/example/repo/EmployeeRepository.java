@@ -12,7 +12,7 @@ import com.db.example.data.EmployeeInfoDto;
 
 
 @Repository
-public interface EmployeeRepository extends JpaRepository<Employee, Long> {
+public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 
     //JPA kustom queryjä voidaan tehdä find metodeilla. Alla olevat esim. mapataan suoraan sql-kyselyiksi.
     //By-sanan jälkeen tulee etsittävä kenttä esim. findByName --> name
@@ -25,7 +25,7 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
     List<Employee> findByNameContains(String keyword);
 
     //Etsii työntekijät joiden id pienempi kuin limit
-    List<Employee> findByIdLessThan(Long limit);
+    List<Employee> findByIdLessThan(Integer limit);
 
 
     //JPQL-formaatilla voidaan tehdä SQL-tyylisiä kyselyjä käyttäen olioita ja parametreja
@@ -41,7 +41,7 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
 
     //Voidaan myös tehdä täysin natiiveja SQL-kyselyjä. Haetaan kaikkien työntekijöiden yrityksen id
     @Query(value="SELECT company_id FROM employee", nativeQuery = true)
-    List<Long> getCompanyIds();
+    List<Integer> getCompanyIds();
 
     //Natiivikyselyjen tuloksia voidaan myös käsitellä mappauksena.
     //Yksi mappaus on yksi rivi. Key on sarakkeen nimi, value vastaava arvo.

@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.db.example.data.Company;
 
 @Repository
-public interface CompanyRepository extends JpaRepository<Company, Long>{
+public interface CompanyRepository extends JpaRepository<Company, Integer>{
 
     //Transactional and modifying annotations required when modifying database
     @Transactional
