@@ -1,7 +1,8 @@
 package com.db.example.data;
 
-//Tätä rajapintaa voidaan käyttää palauttamaan reposorysta kustomoidun olion
-//Tietokanhaussa haettuja kenttiä vastaa getterit kuten ename -> getEname
+
+//This interface may be user to get customized object from the database
+//The repository query fields are mapped to methodnames e.g. ename => getEname()
 public interface EmployeeInfoDto {
     String getEname();
     String getCname();
