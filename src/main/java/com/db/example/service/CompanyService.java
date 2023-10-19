@@ -32,7 +32,7 @@ public class CompanyService {
      * Hakee työntekijöiden nimen ja työpaikan nimen olioina.
      */
     public List<EmployeeInfoDto> getEmployeeInfos(){
-        return empRepo.getEmpoyeeInfos();
+        return empRepo.getNativeDTO();
     }
 
     /**

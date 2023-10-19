@@ -38,10 +38,6 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
     @Query("SELECT e.name FROM Employee e WHERE e.name LIKE %:keyword%")
     List<String> getEmployeeNamesByKeyword(String keyword);
 
-    //Useampi sarake talletetaan kustomoituun DTO-olioon.
-    //Aliaksilla erotellaan nimet DTO:hon  ename-->getEname  cname-->getCname
-    @Query("SELECT e.name as ename, c.name as cname FROM Employee e JOIN Company c ON e.companyId=c.id")
-    List<EmployeeInfoDto> getEmpoyeeInfos();
 
     //Voidaan myös tehdä täysin natiiveja SQL-kyselyjä. Haetaan kaikkien työntekijöiden yrityksen id
     @Query(value="SELECT company_id FROM employee", nativeQuery = true)
@@ -52,5 +48,9 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
     @Query(value="SELECT employee.name ename, company.name cname  FROM employee JOIN company ON company.id=employee.company_id", nativeQuery = true)
     List<Map<String, Object>> getCustomEmployeeInfo();
 
+    //Useampi sarake talletetaan kustomoituun DTO-olioon.
+    //Aliaksilla erotellaan nimet DTO:hon  ename-->getEname  cname-->getCname
+    @Query(value="SELECT e.name ename, c.name cname FROM employee e JOIN company c ON e.company_id=c.id", nativeQuery = true)
+    List<EmployeeInfoDto> getNativeDTO();
     
 }
